@@ -11,6 +11,12 @@ class Driver:
         self.start_city = start_city
 
 # 2. The cities that the company delivers to and where the driver can go from that city.
+
+class City:
+    def __init__(self, city_name):
+        self.city_name = city_name
+        self.destinations = []
+
 # There are three main menus in the system. When the user runs the program, they are welcomed with
 # the first one which displays:
 # Hello! Please enter:
