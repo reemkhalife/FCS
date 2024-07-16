@@ -35,11 +35,12 @@ def main_menu():
         # print("Drivers menu")
         drivers_menu()
     elif user_iput == '2':
-        print("Cities menu")
+        cities_menu()
     elif user_iput == '3':
         print("Exiting the system. Goodbye!")
     else:
         print("Invalid input. Please try again.")
+        main_menu()
 
 # DRIVERS’ MENU
 # In that menu, the user is greeted with the following options:
@@ -83,6 +84,26 @@ def drivers_menu():
 # 1. Show cities
 # 2. Print neighboring cities
 # 3. Print Drivers delivering to city
+
+def cities_menu():
+    print("\nCITIES' MENU\n")
+    print("Enter:")
+    print("1. Show cities")
+    print("2. Print neighboring cities")
+    print("3. Print drivers delivering to city")
+    print("4. To go back to main menu")
+    user_iput = input()
+    if user_iput == '1':
+        print("show cities")
+    elif user_iput == '2':
+        print("print neighboring cities")
+    elif user_iput == '3':
+        print("print drivers delivering_to city")
+    elif user_iput == '4':
+        main_menu()
+    else:
+        print("Invalid input. Please try again.")
+
 # Show cities
 # Print a list with the name of all the cities in the program.
 # Print neighboring cities
