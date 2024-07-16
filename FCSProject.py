@@ -3,6 +3,7 @@
 # Global variables to store cities and drivers
 
 drivers = {}
+cities = {}
 
 # In your system, you should keep track of two things:
 # 1. The drivers that the company has, their worker ID, their name, and their start city.
@@ -64,6 +65,7 @@ def drivers_menu():
         view_all_drivers()
     elif user_iput == '2':
         print("add driver")
+        add_driver()
     elif user_iput == '3':
         main_menu()
     else:
@@ -89,6 +91,31 @@ def view_all_drivers():
 # The user might input an invalid start city, make sure that the start city is already available in the
 # database. If the city is not available, ask the user if they want to add it to the database, if yes,
 # you should do so.
+
+def add_driver():
+    nb_driver = len(drivers)
+    name = input("Enter the driver's name: ")
+    start_city = input("Enter the driver's start city: ")
+
+    if start_city not in cities:
+        add_city = input("The city {0} is not in the database. Do you want to add it? (yes/no): " .format(start_city)).strip().lower()
+        if add_city == 'yes':
+            add_city_to_database(start_city)
+        else:
+            print("Not adding driver.")
+            return
+
+    nb_driver += 1
+    nb_driver_str = str(nb_driver).zfill(3)
+    driver_id = "ID{0}" .format(nb_driver_str)
+    drivers[nb_driver_str] = Driver(driver_id, name, start_city)
+    print("Driver {0} added with ID {1} and start city {2}." .format(name, driver_id, start_city))
+
+def add_city_to_database(city_name):
+    if city_name not in cities:
+        cities[city_name] = City(city_name)
+        print("City {0} added to the database." .format(city_name))
+
 # Go back
 # This option takes the user back to the previous main menu.
 # CITIES’ MENU
