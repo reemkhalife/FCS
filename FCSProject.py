@@ -24,6 +24,22 @@ class City:
 # 2. To go to the cities’ menu
 # 3. To exit the system
 # Based on the user input, your system will either redirect them to the next menu, or exit.
+
+def main_menu():
+    print("Hello! Please enter:")
+    print("1. To go to the drivers' menu")
+    print("2. To go to the cities' menu")
+    print("3. To exit the system")
+    user_iput = input()
+    if user_iput == '1':
+        print("Drivers menu")
+    elif user_iput == '2':
+        print("Cities menu")
+    elif user_iput == '3':
+        print("Exiting the system. Goodbye!")
+    else:
+        print("Invalid input. Please try again.")
+
 # DRIVERS’ MENU
 # In that menu, the user is greeted with the following options:
 # Enter:
@@ -62,3 +78,5 @@ class City:
 # Hint:
 # There are functions called “Breadth First Search (BFS)” and “Depth First Search (DFS)”, you can look
 # them up and use them here. But you don’t have to.
+
+main_menu()
