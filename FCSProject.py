@@ -26,13 +26,14 @@ class City:
 # Based on the user input, your system will either redirect them to the next menu, or exit.
 
 def main_menu():
-    print("Hello! Please enter:")
+    print("\n\nHello! Please enter:")
     print("1. To go to the drivers' menu")
     print("2. To go to the cities' menu")
     print("3. To exit the system")
     user_iput = input()
     if user_iput == '1':
-        print("Drivers menu")
+        # print("Drivers menu")
+        drivers_menu()
     elif user_iput == '2':
         print("Cities menu")
     elif user_iput == '3':
@@ -46,6 +47,23 @@ def main_menu():
 # 1. To view all the drivers
 # 2. To add a driver
 # 3. To go back to main menu
+
+def drivers_menu():
+    print("\nDRIVERS' MENU\n")
+    print("Enter:")
+    print("1. To view all the drivers")
+    print("2. To add a driver")
+    print("3. To go back to main menu")
+    user_iput = input()
+    if user_iput == '1':
+        print("view all drivers")
+    elif user_iput == '2':
+        print("add driver")
+    elif user_iput == '3':
+        main_menu()
+    else:
+        print("Invalid input. Please try again.")
+
 # View all drivers
 # A list of all the drivers and their detail is printed to the users
 # i.e.:
