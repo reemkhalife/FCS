@@ -1,3 +1,5 @@
+from collections import deque
+
 # Write a program for the company “We Deliver” which helps it keep track of its drivers and the cities
 # it is delivering to.
 # Global variables to store cities and drivers
@@ -169,12 +171,6 @@ def show_cities():
 # Print neighboring cities
 # Asks the user for a city name, and then prints all cities that can be reached from the user input.
 
-# Print Drivers delivering to city
-# Asks the users for a city name, and then prints all drivers that are delivering to this city. Drivers might
-# not have this city as their starting city, but they can reach it by going through different cities.
-# For example, if the user inputs Beirut, Both Max and Charles will be printed. But if the user inputs
-# Zahle, only Lando will be printed.
-
 def print_neighboring_cities():
     city_name = input("Enter the city name: ").capitalize()
     if city_name not in cities:
@@ -182,6 +178,31 @@ def print_neighboring_cities():
     else:
         neighbors = cities[city_name].destinations
         print("Cities reachable from {0}: {1}" .format(city_name, ', '.join(sorted(neighbors))))
+
+# Print Drivers delivering to city
+# Asks the users for a city name, and then prints all drivers that are delivering to this city. Drivers might
+# not have this city as their starting city, but they can reach it by going through different cities.
+# For example, if the user inputs Beirut, Both Max and Charles will be printed. But if the user inputs
+# Zahle, only Lando will be printed.
+
+def can_visit(start_city, end_city):
+    if start_city not in cities or end_city not in cities:
+        return False
+
+    stack = deque([start_city])
+    visited = []
+
+    while stack:
+        current = stack.pop()
+        if current == end_city:
+            return True
+        if current not in visited:
+            visited.append(current)
+            for destination in cities[current].destinations:
+                if destination not in visited:
+                    stack.append(destination)
+    
+    return False
 
 # Hint:
 # There are functions called “Breadth First Search (BFS)” and “Depth First Search (DFS)”, you can look
