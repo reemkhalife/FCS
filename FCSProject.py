@@ -153,6 +153,7 @@ def cities_menu():
         print_neighboring_cities()
     elif user_iput == '3':
         print("print drivers delivering to city")
+        print_drivers_delivering_to_city()
     elif user_iput == '4':
         main_menu()
     else:
@@ -211,6 +212,18 @@ def find_drivers_reachable_to_city(city_name):
             reachable_drivers.append(driver)
     return reachable_drivers
 
+def print_drivers_delivering_to_city():
+    city_name = input("Enter the city name: ").capitalize()
+    if city_name not in cities:
+        print("The city {0} is not in the database." .format(city_name))
+    else:
+        reachable_drivers = find_drivers_reachable_to_city(city_name)
+        if not reachable_drivers:
+            print("No drivers can reach {0}." .format(city_name))
+        else:
+            for driver in reachable_drivers:
+                print("{0}, {1}, {2}". format(driver.driver_id, driver.name, driver.start_city))
+
 # Hint:
 # There are functions called “Breadth First Search (BFS)” and “Depth First Search (DFS)”, you can look
 # them up and use them here. But you don’t have to.
@@ -224,5 +237,11 @@ add_city_to_database('Zahle')
 add_link('Saida', 'Zahle')
 add_link('Beirut', 'Jbeil')
 add_link('Jbeil', 'Akkar')
+
+drivers = {
+    'ID001': Driver('ID001', 'Max Verstappen', 'Akkar'),
+    'ID002': Driver('ID002', 'Charles Leclerc', 'Saida'),
+    'ID003': Driver('ID003', 'Lando Norris', 'Jbeil')
+}
 
 main_menu()
