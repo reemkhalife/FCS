@@ -21,6 +21,16 @@ class City:
         self.city_name = city_name
         self.destinations = []
 
+    def add_destination(self, destination):
+        if destination not in self.destinations:
+            self.destinations.append(destination)
+
+def add_link(start_city, destination_city):
+    if start_city in cities and destination_city in cities:
+        cities[start_city].add_destination(destination_city)
+        cities[destination_city].add_destination(start_city)
+        print("Link added from {0} to {1}." .format(start_city, destination_city))
+
 # There are three main menus in the system. When the user runs the program, they are welcomed with
 # the first one which displays:
 # Hello! Please enter:
@@ -139,7 +149,7 @@ def cities_menu():
     elif user_iput == '2':
         print("print neighboring cities")
     elif user_iput == '3':
-        print("print drivers delivering_to city")
+        print("print drivers delivering to city")
     elif user_iput == '4':
         main_menu()
     else:
@@ -164,8 +174,20 @@ def show_cities():
 # For example, if the user inputs Beirut, Both Max and Charles will be printed. But if the user inputs
 # Zahle, only Lando will be printed.
 
+
+
 # Hint:
 # There are functions called “Breadth First Search (BFS)” and “Depth First Search (DFS)”, you can look
 # them up and use them here. But you don’t have to.
+
+add_city_to_database('Akkar')
+add_city_to_database('Saida')
+add_city_to_database('Jbeil')
+add_city_to_database('Beirut')
+add_city_to_database('Zahle')
+
+add_link('Saida', 'Zahle')
+add_link('Jbeil', 'Akkar')
+add_link('Beirut', 'Jbeil')
 
 main_menu()
