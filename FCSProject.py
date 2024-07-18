@@ -147,7 +147,8 @@ def cities_menu():
         # print("show cities")
         show_cities()
     elif user_iput == '2':
-        print("print neighboring cities")
+        # print("print neighboring cities")
+        print_neighboring_cities()
     elif user_iput == '3':
         print("print drivers delivering to city")
     elif user_iput == '4':
@@ -174,7 +175,13 @@ def show_cities():
 # For example, if the user inputs Beirut, Both Max and Charles will be printed. But if the user inputs
 # Zahle, only Lando will be printed.
 
-
+def print_neighboring_cities():
+    city_name = input("Enter the city name: ").capitalize()
+    if city_name not in cities:
+        print("The city {0} is not in the database." .format(city_name))
+    else:
+        neighbors = cities[city_name].destinations
+        print("Cities reachable from {0}: {1}" .format(city_name, ', '.join(sorted(neighbors))))
 
 # Hint:
 # There are functions called “Breadth First Search (BFS)” and “Depth First Search (DFS)”, you can look
@@ -187,7 +194,7 @@ add_city_to_database('Beirut')
 add_city_to_database('Zahle')
 
 add_link('Saida', 'Zahle')
-add_link('Jbeil', 'Akkar')
 add_link('Beirut', 'Jbeil')
+add_link('Jbeil', 'Akkar')
 
 main_menu()
