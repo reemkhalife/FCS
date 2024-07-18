@@ -50,9 +50,11 @@ def main_menu():
     if user_iput == '1':
         # print("Drivers menu")
         drivers_menu()
+        main_menu()
     elif user_iput == '2':
         # print("Cities menu")
         cities_menu()
+        main_menu()
     elif user_iput == '3':
         print("Exiting the system. Goodbye!")
     else:
@@ -152,7 +154,7 @@ def cities_menu():
         # print("print neighboring cities")
         print_neighboring_cities()
     elif user_iput == '3':
-        print("print drivers delivering to city")
+        # print("print drivers delivering to city")
         print_drivers_delivering_to_city()
     elif user_iput == '4':
         main_menu()
